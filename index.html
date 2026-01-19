@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arquitectura UI educativa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav class="nav container" aria-label="Navegación principal">
+        <a class="logo" href="#top" aria-label="Inicio">
+          <span class="logo-mark" aria-hidden="true"></span>
+          Lumina
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">
+          <span class="sr-only">Abrir menú</span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="#services">Servicios</a>
+          <a href="#benefits">Beneficios</a>
+          <a href="#pricing">Planes</a>
+          <a href="#blog">Blog</a>
+        </div>
+        <div class="nav-actions">
+          <button class="btn btn-secondary">Entrar</button>
+          <button class="btn btn-primary">Comenzar</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <p class="eyebrow">Arquitectura UI educativa</p>
+            <h1 id="hero-title">
+              Diseña experiencias modernas con ritmo, capas y movimiento sutil.
+            </h1>
+            <p class="lead">
+              Una composición inspirada en layouts editoriales: grid de 12 columnas,
+              tarjetas elevadas, micro-animaciones y secciones alternadas que
+              transmiten confianza.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary">Explorar plataforma</button>
+              <button class="btn btn-secondary">Ver demo</button>
+            </div>
+            <div class="hero-stats" role="list">
+              <div role="listitem">
+                <h3>2.3x</h3>
+                <p>Mejora de conversión</p>
+              </div>
+              <div role="listitem">
+                <h3>18k+</h3>
+                <p>Equipos activos</p>
+              </div>
+              <div role="listitem">
+                <h3>96%</h3>
+                <p>Satisfacción global</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-card reveal">
+              <div class="badge">Novedad</div>
+              <h4>Panel estratégico</h4>
+              <p>Comparativas rápidas y métricas en tiempo real.</p>
+              <div class="hero-metrics">
+                <div>
+                  <span>Tráfico</span>
+                  <strong>+28%</strong>
+                </div>
+                <div>
+                  <span>Retención</span>
+                  <strong>84%</strong>
+                </div>
+              </div>
+            </div>
+            <div class="float-card float-card--top">
+              <p>Revisión semanal</p>
+              <strong>Listo para publicar</strong>
+            </div>
+            <div class="float-card float-card--bottom">
+              <p>Equipo remoto</p>
+              <strong>12 miembros activos</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="logos section" aria-label="Empresas destacadas">
+        <div class="container">
+          <p class="muted">Marcas que confían en experiencias claras</p>
+          <div class="logo-row">
+            <span>Nordic</span>
+            <span>Axis</span>
+            <span>Orbit</span>
+            <span>Vanta</span>
+            <span>Shoreline</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="statement section alt" aria-labelledby="statement-title">
+        <div class="container statement-grid reveal">
+          <div>
+            <p class="eyebrow">Estrategia visual</p>
+            <h2 id="statement-title">Claridad antes que ruido.</h2>
+            <p class="lead">
+              Con un sistema de espaciado consistente y tipografía escalonada, los
+              mensajes clave aparecen en el momento justo.
+            </p>
+          </div>
+          <div class="statement-card">
+            <h3>Arquitectura en capas</h3>
+            <p>
+              Componentes modulares que se adaptan a campañas, productos y nuevas
+              narrativas sin perder coherencia.
+            </p>
+            <button class="btn btn-text">Conoce la metodología →</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="services section" id="services" aria-labelledby="services-title">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Servicios</p>
+              <h2 id="services-title">Un grid que respira</h2>
+            </div>
+            <p class="lead">
+              Tarjetas con sombra suave, bordes definidos y un ritmo de 4/8/12/16/24.
+            </p>
+          </div>
+          <div class="grid cards" data-stagger>
+            <article class="card reveal">
+              <h3>Auditoría UI</h3>
+              <p>Revisión de jerarquía, contraste y legibilidad.</p>
+              <span class="pill">02 semanas</span>
+            </article>
+            <article class="card reveal">
+              <h3>Design system</h3>
+              <p>Tokens, estados, componentes y documentación.</p>
+              <span class="pill">04 módulos</span>
+            </article>
+            <article class="card reveal">
+              <h3>Prototipos</h3>
+              <p>Layouts interactivos para validar rápido.</p>
+              <span class="pill">Iterativo</span>
+            </article>
+            <article class="card reveal">
+              <h3>Entrega final</h3>
+              <p>Kit de assets optimizado para desarrollo.</p>
+              <span class="pill">Listo en 5 días</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="benefits section alt" id="benefits" aria-labelledby="benefits-title">
+        <div class="container benefits-grid">
+          <div class="reveal">
+            <p class="eyebrow">Beneficios clave</p>
+            <h2 id="benefits-title">Ritmo visual que guía la mirada.</h2>
+            <p class="lead">
+              Secciones alternadas con fondos suaves, cards elevadas y badges flotantes.
+            </p>
+            <ul class="checklist">
+              <li>Compatibilidad responsive en 3 rangos clave.</li>
+              <li>Animaciones discretas con IntersectionObserver.</li>
+              <li>Hover lift y micro transiciones.</li>
+            </ul>
+          </div>
+          <div class="benefit-panels">
+            <div class="panel reveal">
+              <h4>Panel de control</h4>
+              <p>Conecta insights y decisiones en un solo espacio.</p>
+            </div>
+            <div class="panel reveal">
+              <h4>Onboarding guiado</h4>
+              <p>Tarjetas informativas con progresión clara.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features section" aria-labelledby="features-title">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Features</p>
+              <h2 id="features-title">Componentes con intención.</h2>
+            </div>
+            <p class="lead">
+              Iconografía simple, espacio generoso y mensajes enfocados en acción.
+            </p>
+          </div>
+          <div class="grid features-grid" data-stagger>
+            <article class="feature-card reveal">
+              <div class="icon">◎</div>
+              <h3>Alertas inteligentes</h3>
+              <p>Notificaciones contextuales sin ruido.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon">◆</div>
+              <h3>Panel dinámico</h3>
+              <p>Widgets reordenables con prioridad visual.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon">◍</div>
+              <h3>Reportes vivos</h3>
+              <p>Visibilidad de métricas en segundos.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon">◈</div>
+              <h3>Integraciones</h3>
+              <p>Conecta herramientas sin fricción.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing section alt" id="pricing" aria-labelledby="pricing-title">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Planes</p>
+              <h2 id="pricing-title">Escala con confianza</h2>
+            </div>
+            <p class="lead">Tarjetas con borde sólido y badges flotantes.</p>
+          </div>
+          <div class="grid pricing-grid" data-stagger>
+            <article class="price-card reveal">
+              <div class="badge">Starter</div>
+              <h3>Explora</h3>
+              <p class="price">$29<span>/mes</span></p>
+              <ul>
+                <li>3 espacios activos</li>
+                <li>Soporte en 24h</li>
+                <li>Biblioteca UI</li>
+              </ul>
+              <button class="btn btn-secondary">Elegir plan</button>
+            </article>
+            <article class="price-card highlight reveal">
+              <div class="badge">Popular</div>
+              <h3>Impulsa</h3>
+              <p class="price">$79<span>/mes</span></p>
+              <ul>
+                <li>Workflows automáticos</li>
+                <li>Diseño colaborativo</li>
+                <li>Dashboards premium</li>
+              </ul>
+              <button class="btn btn-primary">Elegir plan</button>
+            </article>
+            <article class="price-card reveal">
+              <div class="badge">Studio</div>
+              <h3>Escala</h3>
+              <p class="price">$149<span>/mes</span></p>
+              <ul>
+                <li>Seguimiento avanzado</li>
+                <li>Reportes personalizables</li>
+                <li>Soporte dedicado</li>
+              </ul>
+              <button class="btn btn-secondary">Elegir plan</button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials section" aria-labelledby="testimonials-title">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Testimonios</p>
+              <h2 id="testimonials-title">Narrativas con movimiento.</h2>
+            </div>
+            <div class="slider-controls" role="group" aria-label="Controles del slider">
+              <button class="slider-btn" data-direction="prev" aria-label="Anterior">←</button>
+              <button class="slider-btn" data-direction="next" aria-label="Siguiente">→</button>
+            </div>
+          </div>
+          <div class="slider" data-slider>
+            <div class="slider-track">
+              <article class="testimonial-card">
+                <p>
+                  “El nuevo layout redujo la fricción y elevó la claridad del
+                  mensaje en cada etapa.”
+                </p>
+                <div>
+                  <strong>María Torres</strong>
+                  <span>Head of Growth</span>
+                </div>
+              </article>
+              <article class="testimonial-card">
+                <p>
+                  “Cada sección tiene su propio respiro. La estructura se siente
+                  premium sin ser pesada.”
+                </p>
+                <div>
+                  <strong>Javier Mena</strong>
+                  <span>Producto digital</span>
+                </div>
+              </article>
+              <article class="testimonial-card">
+                <p>
+                  “Las animaciones sutiles y el ritmo del grid mejoraron la
+                  percepción de marca.”
+                </p>
+                <div>
+                  <strong>Sofía Blanc</strong>
+                  <span>UX Lead</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="blog section alt" id="blog" aria-labelledby="blog-title">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Blog</p>
+              <h2 id="blog-title">Ideas que inspiran diseño.</h2>
+            </div>
+            <button class="btn btn-secondary">Ver todos</button>
+          </div>
+          <div class="grid blog-grid" data-stagger>
+            <article class="blog-card reveal">
+              <div class="blog-image" aria-hidden="true"></div>
+              <div class="blog-content">
+                <span class="pill">Guía</span>
+                <h3>Cómo definir una escala tipográfica moderna</h3>
+                <p>Jerarquía clara con 6 niveles y line-height consistente.</p>
+              </div>
+            </article>
+            <article class="blog-card reveal">
+              <div class="blog-image" aria-hidden="true"></div>
+              <div class="blog-content">
+                <span class="pill">Insight</span>
+                <h3>Micro interacciones que elevan percepción</h3>
+                <p>Pequeños detalles que generan confianza visual.</p>
+              </div>
+            </article>
+            <article class="blog-card reveal">
+              <div class="blog-image" aria-hidden="true"></div>
+              <div class="blog-content">
+                <span class="pill">Sistema</span>
+                <h3>Crear un ritmo de 8px sin perder flexibilidad</h3>
+                <p>Espacios generosos, pero coherentes.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta section" aria-labelledby="cta-title">
+        <div class="container cta-card reveal">
+          <div>
+            <p class="eyebrow">Listo para empezar</p>
+            <h2 id="cta-title">Convierte tu UI en una experiencia inolvidable.</h2>
+            <p class="lead">
+              Un blueprint educativo con estructura clara, ritmo y animaciones suaves.
+            </p>
+          </div>
+          <div class="cta-actions">
+            <button class="btn btn-primary">Agendar una demo</button>
+            <button class="btn btn-secondary">Descargar guía</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" aria-labelledby="footer-title">
+      <div class="container footer-grid">
+        <div>
+          <a class="logo" href="#top" aria-label="Inicio">
+            <span class="logo-mark" aria-hidden="true"></span>
+            Lumina
+          </a>
+          <p id="footer-title" class="lead">
+            Arquitectura de UI inspirada en Webflow para experimentación educativa.
+          </p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Producto</h4>
+            <ul>
+              <li><a href="#">Componentes</a></li>
+              <li><a href="#">Documentación</a></li>
+              <li><a href="#">Updates</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Comunidad</h4>
+            <ul>
+              <li><a href="#">Eventos</a></li>
+              <li><a href="#">Guías</a></li>
+              <li><a href="#">Mentores</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Soporte</h4>
+            <ul>
+              <li><a href="#">Centro de ayuda</a></li>
+              <li><a href="#">Políticas</a></li>
+              <li><a href="#">Contacto</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p>© 2024 Lumina. Diseñado para aprendizaje.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
