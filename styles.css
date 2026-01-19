@@ -281,6 +281,30 @@ h4 {
   min-height: 420px;
 }
 
+.media-placeholder {
+  border: 1px dashed rgba(22, 96, 136, 0.4);
+  border-radius: var(--radius-md);
+  padding: var(--space-16);
+  color: var(--primary);
+  font-size: 0.85rem;
+  text-align: center;
+  background: rgba(192, 214, 223, 0.4);
+}
+
+.hero-placeholder {
+  margin-bottom: var(--space-24);
+}
+
+.benefits-placeholder {
+  margin-top: var(--space-24);
+}
+
+.photo-placeholder {
+  min-height: 80px;
+  display: grid;
+  place-items: center;
+}
+
 .hero-card {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
