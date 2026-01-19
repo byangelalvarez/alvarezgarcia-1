@@ -289,6 +289,27 @@ h4 {
   font-size: 0.85rem;
   text-align: center;
   background: rgba(192, 214, 223, 0.4);
+  display: grid;
+  gap: var(--space-12);
+}
+
+.media-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) - 6px);
+}
+
+.hero-placeholder img {
+  aspect-ratio: 16 / 10;
+}
+
+.benefits-placeholder img {
+  aspect-ratio: 16 / 9;
+}
+
+.photo-placeholder img {
+  aspect-ratio: 4 / 3;
 }
 
 .hero-placeholder {
