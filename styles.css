@@ -397,6 +397,7 @@ h4 {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-family: var(--font-heading);
+  align-items: center;
 }
 
 .section-header {
@@ -792,6 +793,6 @@ h4 {
 
   .logo {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 }
