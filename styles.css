@@ -323,7 +323,7 @@ h4 {
   grid-template-columns: repeat(1fr, 2);
   gap: var(--space-64);
   align-items: center;
-  flex-direction: column-reverse:
+  flex-direction: column-reverse;
 }
 
 .hero-content h1 {
