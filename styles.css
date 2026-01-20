@@ -179,10 +179,14 @@ h4 {
 }
 
 .nav-toggle {
-  display: none;
-  border: none;
-  background: none;
+  display: inline-flex;
+  border: 1px solid rgba(31, 39, 27, 0.18);
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 14px;
+  padding: 10px 12px;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-toggle-bar {
@@ -191,6 +195,68 @@ h4 {
   height: 2px;
   background: var(--text);
   margin: 5px 0;
+}
+
+.nav-links {
+  display: none;
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  background: var(--bg-card);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-16);
+  box-shadow: var(--shadow-soft);
+  gap: var(--space-12);
+}
+
+.nav-links a {
+  color: var(--text);
+  font-style: italic;
+  font-weight: 600;
+  padding: 10px 10px;
+  border-radius: 12px;
+}
+
+.nav-links a:hover {
+  background: rgba(22, 96, 136, 0.08);
+}
+
+/* Desktop nav */
+@media (min-width: 900px) {
+  .nav {
+    grid-template-columns: auto 1fr auto;
+    gap: var(--space-24);
+    padding: var(--space-16) 0;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    grid-column: auto;
+    margin-top: 0;
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    gap: var(--space-24);
+    justify-content: center;
+  }
+    .nav-links a {
+    padding: 0;
+    border-radius: 0;
+    background: none;
+  }
+
+  .nav-actions {
+    display: flex;
+    grid-column: auto;
+    margin-top: 0;
+    gap: var(--space-16);
+    justify-content: flex-end;
+  }
 }
 
 .sr-only {
@@ -251,11 +317,13 @@ h4 {
   font-style: italic;
 }
 
+
 .hero-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1fr, 2);
   gap: var(--space-64);
   align-items: center;
+  flex-direction: column-reverse:
 }
 
 .hero-content h1 {
@@ -272,6 +340,17 @@ h4 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-16);
+}
+
+@media (max-width: 500px) {
+.hero-stats {
+  content-visibility: hidden;
+}
+
+.hero-actions {
+  content-visibility: hidden;
+}
+
 }
 
 .hero-stats h3 {
@@ -385,22 +464,37 @@ h4 {
   right: -12px;
 }
 
+
 .logos {
   padding: var(--space-32) 0;
 }
 
 .logo-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: var(--space-24);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-16);
   margin-top: var(--space-16);
-  color: var(--text-muted);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-family: var(--font-heading);
+
   align-items: center;
 }
+
+.logo-row span {
+  display: grid;
+  place-items: center;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(31, 39, 27, 0.10);
+}
+
+.logo-row img {
+  max-height: 28px;   /* CLAVE */
+  width: auto;
+  object-fit: contain;
+  filter: saturate(1.05);
+  opacity: 0.95;
+}
+
 
 .section-header {
   display: flex;
