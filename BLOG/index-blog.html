@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Blog | Recursos y cursos — Álvarez García</title>
+    <meta name="description"
+        content="Artículos, plantillas y guías prácticas para Excel, Power Query, Power BI y productividad operativa." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Roboto:ital,wght@0,400;1,400&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+        .search-container {
+            margin-top: var(--space-32);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-16);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 999px;
+            padding: 12px 24px;
+            box-shadow: var(--shadow-soft);
+            max-width: 600px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+            margin-left: 12px;
+            font-size: 1.1rem;
+            font-family: var(--font-body);
+        }
+
+        .chips {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            padding: 10px 20px;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: #fff;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .chip[data-active="true"] {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 8px 16px rgba(22, 96, 136, 0.2);
+        }
+
+        .blog-shell {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: var(--space-64);
+            align-items: start;
+        }
+
+        @media (max-width: 980px) {
+            .blog-shell {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="nav container">
+            <a class="logo" href="../index.html">
+                <span><img src="../assets/logo-alvarez.png" alt="Álvarez García" style="height: 32px;" /></span>
+            </a>
+            <div class="nav-links">
+                <a href="../index.html#ruta-30">S.E.D.</a>
+                <a href="../100-dias-excel.html">100 Días</a>
+                <a href="index-blog.html" aria-current="page">Blog</a>
+                <a href="../index.html#contacto">Diagnóstico</a>
+            </div>
+            <div class="nav-actions">
+                <a class="btn btn-primary" href="https://wa.me/528126876924">WhatsApp</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-hero"
+            style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); overflow: hidden; position: relative; padding: 120px 0;">
+            <div
+                style="position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: rgba(22, 96, 136, 0.03); border-radius: 50%;">
+            </div>
+            <div
+                style="position: absolute; bottom: -50px; left: -50px; width: 200px; height: 200px; background: rgba(74, 111, 165, 0.03); border-radius: 50%;">
+            </div>
+
+            <div class="container hero-grid" style="position: relative; z-index: 1;">
+                <div class="hero-content">
+                    <p class="eyebrow" style="margin-bottom: 24px;">Contenido para Profesionales</p>
+                    <h1
+                        style="font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 24px;">
+                        Aprende. Aplica. <span class="gradient-apple">Optimiza.</span></h1>
+                    <p class="lead" style="font-size: 1.35rem; max-width: 600px; line-height: 1.5; color: #475569;">
+                        Recursos prácticos, plantillas de Excel y guías detalladas para profesionales que buscan
+                        resultados, no teoría.
+                    </p>
+
+                    <div class="search-container">
+                        <div class="search-bar" style="max-width: 100%; border: 1px solid rgba(0,0,0,0.06);">
+                            <span style="font-size: 1.2rem;">�</span>
+                            <input type="text" id="searchInput" placeholder="Busca un tema (ej. Power Query, S.E.D...)"
+                                style="font-weight: 500;" />
+                        </div>
+                        <div class="chips" style="margin-top: 24px;">
+                            <button class="chip" data-filter="all" data-active="true">📢 Todo</button>
+                            <button class="chip" data-filter="excel">📊 Excel</button>
+                            <button class="chip" data-filter="powerquery">⚙️ Power Query</button>
+                            <button class="chip" data-filter="powerbi">📈 Power BI</button>
+                            <button class="chip" data-filter="sed">💎 S.E.D.</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual" style="display: flex; justify-content: flex-end;">
+                    <div style="position: relative; width: 100%; max-width: 500px;">
+                        <img src="../assets/decisiones-impacto.png" alt="Álvarez García Blog"
+                            style="width: 100%; border-radius: 32px; box-shadow: 0 40px 80px rgba(0,0,0,0.1); transform: rotate(-2deg);" />
+                        <div
+                            style="position: absolute; bottom: -24px; right: -24px; background: #fff; padding: 24px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); z-index: 2;">
+                            <strong style="display: block; font-size: 1.25rem;">+100</strong>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">Horas ahorradas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: #fff; padding-top: 100px; padding-bottom: 120px;">
+            <div class="container blog-shell">
+                <div id="postGrid" class="blog-feed-container">
+                    <!-- Dynamic items go here -->
+                    <div style="padding: 60px; text-align: center;">
+                        <p style="color: var(--text-muted); font-size: 1.1rem;">Cargando conocimientos...</p>
+                    </div>
+                </div>
+
+                <aside class="sidebar">
+                    <div class="side-card"
+                        style="background: #f8fafc; border: none; padding: 32px; border-radius: 24px;">
+                        <h3 style="font-size: 1.25rem; margin-bottom: 16px;">¿Eres nuevo aquí?</h3>
+                        <p class="muted" style="line-height: 1.6;">Este blog está diseñado para darte soluciones
+                            rápidas. No hacemos posts de 20 minutos; hacemos guías que puedes aplicar en 5.</p>
+                        <a href="#searchInput" class="btn-read-more"
+                            style="margin-top: 24px; display: inline-flex;">Empieza a buscar</a>
+                    </div>
+
+                    <div class="side-card"
+                        style="margin-top: 32px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff; border: none; padding: 40px 32px; border-radius: 24px; box-shadow: 0 20px 40px rgba(22, 96, 136, 0.2);">
+                        <h3 style="color: #fff; margin-bottom: 16px; font-size: 1.5rem;">Sistema S.E.D.</h3>
+                        <p style="opacity: 0.9; margin-bottom: 32px; font-size: 1rem; line-height: 1.5;">Lleva tu
+                            departamento al siguiente nivel con auditoría y automatización real.</p>
+                        <a href="../index.html#contacto" class="btn"
+                            style="background: #fff; color: var(--primary); width: 100%; text-align: center; padding: 16px; border-radius: 12px; font-weight: 700;">Agendar
+                            Diagnóstico</a>
+                    </div>
+
+                    <div class="side-card"
+                        style="margin-top: 32px; padding: 24px; border: 1px solid rgba(0,0,0,0.06); border-radius: 20px;">
+                        <h3 style="font-size: 1.1rem; margin-bottom: 16px;">Categorías Populares</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span class="pill">Automation</span>
+                            <span class="pill">Dashboards</span>
+                            <span class="pill">Data Cleaning</span>
+                            <span class="pill">KPIs</span>
+                            <span class="pill">Productivity</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container" style="padding: 64px 0;">
+            <p>© 2026 Álvarez García — Consultoría y Capacitación.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Preview -->
+    <div id="postPreviewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="blog-engine.js"></script>
+</body>
+
+</html>

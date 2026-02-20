@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>100 Días de Excel | Prácticas Oficiales — Álvarez García</title>
+  <meta
+    name="description"
+    content="Archivos oficiales del reto 100 Días de Excel. Descarga, practica y refuerza lo aprendido en los videos de @angelalvarezprofe."
+  />
+
+  <!-- Fuentes iguales al sitio -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400&family=Roboto:ital,wght@0,400;1,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Estilos SOLO para esta página (se mantienen, se agregan estilos de cards del “código anterior”) -->
+  <style>
+    /* Texto degradado animado */
+    .gradient-apple {
+      background: linear-gradient(
+        120deg,
+        var(--primary),
+        var(--accent),
+        var(--bg-alt),
+        var(--primary)
+      );
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientMove 6s ease-in-out infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .excel-hero {
+      padding: var(--space-64) 0;
+    }
+
+    .excel-actions {
+      display: flex;
+      gap: var(--space-16);
+      margin-top: var(--space-32);
+      flex-wrap: wrap;
+    }
+
+    .avatars {
+      display: flex;
+      align-items: center;
+      margin-top: var(--space-24);
+    }
+
+    .avatars img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      margin-left: -10px;
+      box-shadow: var(--shadow-soft);
+      background: #fff;
+    }
+
+    .avatars img:first-child {
+      margin-left: 0;
+    }
+
+    .phone-hero {
+      position: relative;
+      margin-top: var(--space-64);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lift);
+    }
+
+    .phone-hero img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .phone-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        var(--bg) 0%,
+        rgba(241,246,248,0.85) 25%,
+        rgba(241,246,248,0.4) 45%,
+        rgba(241,246,248,0) 65%
+      );
+    }
+
+    @media (max-width: 768px) {
+      .phone-hero img {
+        height: 420px;
+      }
+    }
+
+    /* ✅ Cards estilo “código anterior” (día-card con número, acciones, perfil) */
+    .day-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-24);
+      margin-top: var(--space-32);
+    }
+
+    @media (max-width: 900px) {
+      .day-grid { grid-template-columns: 1fr; }
+    }
+
+    .day-card {
+      background: rgba(255, 255, 255, 0.72);
+      border: var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-24);
+      box-shadow: var(--shadow-soft);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .day-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lift);
+    }
+
+    .day-number {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.25rem;
+      background: rgba(22, 96, 136, 0.12);
+      border: 1px solid rgba(22, 96, 136, 0.18);
+      margin-bottom: var(--space-16);
+    }
+
+    .day-title {
+      margin: 0 0 var(--space-8);
+      font-size: 1.35rem;
+      font-family: var(--font-heading);
+    }
+
+    .day-hook {
+      color: var(--text-muted);
+      margin: 0 0 var(--space-16);
+    }
+
+    .day-actions {
+      display: flex;
+      gap: var(--space-12);
+      flex-wrap: wrap;
+      margin-top: var(--space-16);
+    }
+
+    .day-thumb {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(22,96,136,0.14);
+    }
+
+    .profile-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: var(--space-16);
+    }
+
+    .profile-row img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: var(--shadow-soft);
+      background: #fff;
+      object-fit: cover;
+    }
+
+    .profile-meta strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.2;
+      font-style: normal;
+    }
+
+    .profile-meta span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+
+    /* Placeholder futuro día */
+    .soon-box{
+      height: 180px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(22,96,136,0.12), rgba(74,111,165,0.12));
+      display: grid;
+      place-items: center;
+      font-family: var(--font-heading);
+      font-style: italic;
+      border: 1px dashed rgba(22,96,136,0.22);
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER reutilizado -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación">
+      <a class="logo" href="https://alvarezgarcia.mx">
+        <span>
+          <img src="assets/logo-alvarez.png" alt="Álvarez García" />
+        </span>
+      </a>
+
+      <div class="nav-actions">
+        <a class="btn btn-secondary" href="https://alvarezgarcia.mx">
+          ← Volver al sitio
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="excel-hero section">
+      <div class="container hero-grid">
+
+        <div class="hero-content">
+          <p class="eyebrow">Reto práctico</p>
+
+          <h1>
+            Bienvenido al<br />
+            <span class="gradient-apple">100 DÍAS DE EXCEL</span>
+          </h1>
+
+          <p class="lead">
+            Encuentra aquí todos los archivos de los días que voy subiendo en mi perfil
+            <a href="https://www.instagram.com/angelalvarezprofe" target="_blank" rel="noopener"><strong>@angelalvarezprofe</strong></a>
+            para practicar lo que viste en el video e ingresa al canal de whatsapp para llevarlo un paso más allá 😎
+          </p>
+
+          <div class="excel-actions">
+            <a
+              class="btn btn-secondary"
+              href="https://whatsapp.com/channel/0029Vb7lTlQJpe8nBQbSoY3u"
+              target="_blank"
+              rel="noopener"
+            >
+              Ingresa al canal de WhatsApp
+            </a>
+          </div>
+
+          <!-- Avatares comunidad -->
+          <div class="avatars" aria-hidden="true">
+            <img src="https://i.pravatar.cc/80?img=12" alt="">
+            <img src="https://i.pravatar.cc/80?img=32" alt="">
+            <img src="https://i.pravatar.cc/80?img=45" alt="">
+            <img src="https://i.pravatar.cc/80?img=56" alt="">
+            <img src="https://i.pravatar.cc/80?img=68" alt="">
+          </div>
+
+          <p class="muted" style="margin-top: var(--space-12);">
+            Personas que ya están practicando en el canal de WhatsApp.
+          </p>
+        </div>
+
+        <!-- Imagen grande -->
+        <div class="hero-visual">
+          <div class="phone-hero">
+            <img
+              src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=1600&q=80"
+              alt="Persona sosteniendo un celular"
+              loading="lazy"
+            />
+            <div class="phone-fade"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+<!-- ✅ SECCIÓN “DÍAS DISPONIBLES” (COMBINADA)
+     - Mantiene tu sección que te encantó (la de “Días disponibles”)
+     - Pero cada día usa el estilo de cards del último código (day-card con número + acciones + perfil)
+     - Solo copia y pega ESTA SECCIÓN dentro de tu 100-dias-excel.html donde va la sección de días
+-->
+
+<section class="section alt" aria-labelledby="dias-title">
+  <div class="container">
+
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">Archivos de práctica</p>
+        <h2 id="dias-title">Días disponibles</h2>
+      </div>
+      <p class="lead">
+        Cada día incluye el archivo exacto que viste en el video para practicar sin fricción.
+      </p>
+    </div>
+
+    <!-- ✅ GRID combinada: mantiene el “layout” bonito + cards de último código -->
+    <div class="day-grid">
+
+      <!-- DÍA 1 (COMPLETO) -->
+      <article class="day-card reveal">
+
+        <!-- Imagen (como en tu sección original, pero usando clase day-thumb del último código) -->
+        <img
+          class="day-thumb"
+          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+          alt="Tablas en Excel"
+          loading="lazy"
+        />
+
+        <!-- Número estilo “último código” -->
+        <div class="day-number">01</div>
+
+        <!-- Pill + título (se mantiene el vibe de tu sección original) -->
+        <span class="pill">Día 1</span>
+
+        <h3 class="day-title" style="margin-top: 12px;">
+          CTRL + T: El poder oculto de las tablas
+        </h3>
+
+        <p class="day-hook">
+          Por qué <strong>CTRL + T</strong> cambia tu forma de trabajar:
+          la columna se auto-llena, las fórmulas ya no se “rompen” al crecer el archivo,
+          y Excel deja de sentirse como una pelea.
+        </p>
+
+        <!-- Acciones estilo “último código” (2 botones) -->
+        <div class="day-actions">
+          <a href="https://www.alvarezgarcia.mx/excel-reto/dia1-100excel.xlsx" class="btn btn-primary">
+            Ir al archivo del Día 1 →
+          </a>
+          <a href="https://www.instagram.com/p/DURRBd6gnD2/" class="btn btn-secondary">Ver video</a>
+        </div>
+
+        <!-- Perfil estilo “último código” -->
+        <div class="profile-row">
+          <img src="assets/angel-profile.jpg" alt="Ángel Álvarez" />
+          <div class="profile-meta">
+            <strong>@angelalvarezprofe</strong>
+            <span>Reto 100 Días</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- DÍA 2 (PLACEHOLDER “PRÓXIMAMENTE” PERO CON LA CARD NUEVA) -->
+      <article class="day-card reveal" style="opacity: 0.72;">
+
+        <!-- Placeholder visual con el estilo del último código -->
+        <div class="soon-box">Próximamente</div>
+
+        <div class="day-number">02</div>
+        <span class="pill">Día 2</span>
+
+        <h3 class="day-title" style="margin-top: 12px;">
+          Siguiente nivel en camino
+        </h3>
+
+        <p class="day-hook">
+          Este día se desbloquea cuando el video esté publicado.
+          Mantente atento al canal de WhatsApp para no perdértelo.
+        </p>
+
+        <div class="day-actions">
+          <a
+            class="btn btn-secondary"
+            href="https://whatsapp.com/channel/0029Vb7lTlQJpe8nBQbSoY3u"
+            target="_blank"
+            rel="noopener"
+          >
+            Entrar al canal
+          </a>
+        </div>
+
+        <div class="profile-row">
+          <img src="assets/angel-profile.jpg" alt="Ángel Álvarez" />
+          <div class="profile-meta">
+            <strong>@angelalvarezprofe</strong>
+            <span>Reto 100 Días</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ✅ OPCIONAL: DÍA 3 (PLACEHOLDER LISTO) -->
+      <article class="day-card reveal" style="opacity: 0.72;">
+        <div class="soon-box">Próximamente</div>
+
+        <div class="day-number">03</div>
+        <span class="pill">Día 3</span>
+
+        <h3 class="day-title" style="margin-top: 12px;">
+          Próximo reto desbloqueable
+        </h3>
+
+        <p class="day-hook">
+          Se activa cuando el video salga. Si quieres ir adelantado,
+          practica el Día 1 hasta que lo hagas sin pensar.
+        </p>
+
+        <div class="day-actions">
+          <a
+            class="btn btn-secondary"
+            href="https://whatsapp.com/channel/0029Vb7lTlQJpe8nBQbSoY3u"
+            target="_blank"
+            rel="noopener"
+          >
+            Entrar al canal
+          </a>
+        </div>
+
+        <div class="profile-row">
+          <img src="assets/angel-profile.jpg" alt="Ángel Álvarez" />
+          <div class="profile-meta">
+            <strong>@angelalvarezprofe</strong>
+            <span>Reto 100 Días</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ✅ OPCIONAL: DÍA 4 (PLACEHOLDER LISTO) -->
+      <article class="day-card reveal" style="opacity: 0.72;">
+        <div class="soon-box">Próximamente</div>
+
+        <div class="day-number">04</div>
+        <span class="pill">Día 4</span>
+
+        <h3 class="day-title" style="margin-top: 12px;">
+          Próximo reto desbloqueable
+        </h3>
+
+        <p class="day-hook">
+          En el canal de WhatsApp avisamos cuando esté arriba el archivo.
+          Aquí lo vas a encontrar en cuanto salga.
+        </p>
+
+        <div class="day-actions">
+          <a
+            class="btn btn-secondary"
+            href="https://whatsapp.com/channel/0029Vb7lTlQJpe8nBQbSoY3u"
+            target="_blank"
+            rel="noopener"
+          >
+            Entrar al canal
+          </a>
+        </div>
+
+        <div class="profile-row">
+          <img src="assets/angel-profile.jpg" alt="Ángel Álvarez" />
+          <div class="profile-meta">
+            <strong>@angelalvarezprofe</strong>
+            <span>Reto 100 Días</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+  </main>
+
+  <!-- FOOTER SIMPLE -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Álvarez García — 100 Días de Excel.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Si tu script.js controla la animación reveal, puedes incluirlo aquí -->
+  <script src="script.js"></script>
+</body>
+</html>

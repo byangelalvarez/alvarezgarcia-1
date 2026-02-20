@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "title": "CTRL + T: El atajo que hace que Excel deje de “romperse”",
+    "excerpt": "Qué cambia cuando conviertes rangos en tablas: columnas que se auto-llenan, fórmulas que se sostienen, y dashboards que no mueren cuando crece el archivo.",
+    "author": "Ángel Álvarez",
+    "date": "2026-02-20",
+    "category": "excel",
+    "image": "assets/hero-home.png",
+    "url": "entradas-blog/ctrl-t-tablas.html",
+    "tags": ["tablas", "excel", "productividad"],
+    "comments": 3
+  }
+]
