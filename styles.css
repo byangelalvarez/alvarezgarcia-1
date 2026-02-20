@@ -320,10 +320,9 @@ h4 {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: repeat(1fr, 2);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-64);
   align-items: center;
-  flex-direction: column-reverse;
 }
 
 .hero-content h1 {
@@ -474,7 +473,6 @@ h4 {
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-16);
   margin-top: var(--space-16);
-
   align-items: center;
 }
 
@@ -488,7 +486,7 @@ h4 {
 }
 
 .logo-row img {
-  max-height: 28px;   /* CLAVE */
+  max-height: 50px;   /* CLAVE */
   width: auto;
   object-fit: contain;
   filter: saturate(1.05);
@@ -1326,4 +1324,114 @@ h4 {
     width: 44px;
     height: 44px;
   }
+}
+
+.social-link{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(31, 39, 27, 0.18);
+  background: rgba(255,255,255,0.75);
+  color: var(--text);
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.social-link:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  border-color: rgba(22, 96, 136, 0.35);
+  color: var(--primary);
+}
+
+/* En móvil: oculta redes en header para no saturar */
+@media (max-width: 768px){
+  .social-link{
+    display: none;
+  }
+}
+
+/* =========================
+   Top bar (contact strip)
+   ========================= */
+
+.top-bar{
+  background: #1f271b; /* oscuro elegante */
+  color: rgba(241,246,248,0.9);
+  font-size: 0.85rem;
+}
+
+.top-bar-container{
+  width: min(1180px, 92vw);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  gap: var(--space-16);
+}
+
+.top-bar a{
+  color: rgba(241,246,248,0.9);
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 500;
+  transition: color .2s ease, opacity .2s ease;
+}
+
+.top-bar a:hover{
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.top-bar-left,
+.top-bar-right{
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.top-sep{
+  opacity: 0.35;
+}
+
+/* Mobile: simplificar sin desaparecer */
+@media (max-width: 768px){
+  .top-bar-container{
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .top-bar{
+    font-size: 0.8rem;
+  }
+}
+
+/* Social icons */
+.social-link{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: rgba(241,246,248,0.9);
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.social-link svg{
+  width: 60px;
+  height: 60px;
+}
+
+.social-link:hover{
+  background: rgba(241,246,248,0.15);
+  color: #ffffff;
+  transform: translateY(-1px);
 }

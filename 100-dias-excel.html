@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>100 Días de Excel | Prácticas Oficiales — Álvarez García</title>
+  <meta
+    name="description"
+    content="Archivos oficiales del reto 100 Días de Excel. Descarga, practica y refuerza lo aprendido en los videos de @angelalvarezprofe."
+  />
+
+  <!-- Fuentes iguales al sitio -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400&family=Roboto:ital,wght@0,400;1,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Estilos SOLO para esta página -->
+  <style>
+    /* Texto degradado animado */
+    .gradient-apple {
+      background: linear-gradient(
+        120deg,
+        var(--primary),
+        var(--accent),
+        var(--bg-alt),
+        var(--primary)
+      );
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientMove 6s ease-in-out infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .excel-hero {
+      padding: var(--space-64) 0;
+    }
+
+    .excel-actions {
+      display: flex;
+      gap: var(--space-16);
+      margin-top: var(--space-32);
+      flex-wrap: wrap;
+    }
+
+    .avatars {
+      display: flex;
+      align-items: center;
+      margin-top: var(--space-24);
+    }
+
+    .avatars img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      margin-left: -10px;
+      box-shadow: var(--shadow-soft);
+      background: #fff;
+    }
+
+    .avatars img:first-child {
+      margin-left: 0;
+    }
+
+    .phone-hero {
+      position: relative;
+      margin-top: var(--space-64);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lift);
+    }
+
+    .phone-hero img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .phone-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        var(--bg) 0%,
+        rgba(241,246,248,0.85) 25%,
+        rgba(241,246,248,0.4) 45%,
+        rgba(241,246,248,0) 65%
+      );
+    }
+
+    @media (max-width: 768px) {
+      .phone-hero img {
+        height: 420px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER reutilizado -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación">
+      <a class="logo" href="https://alvarezgarcia.mx">
+        <span>
+          <img src="assets/logo-alvarez.png" alt="Álvarez García" />
+        </span>
+      </a>
+
+      <div class="nav-actions">
+        <a class="btn btn-secondary" href="https://alvarezgarcia.mx">
+          ← Volver al sitio
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="excel-hero section">
+      <div class="container hero-grid">
+
+        <div class="hero-content">
+          <p class="eyebrow">Reto práctico</p>
+
+          <h1>
+            Bienvenido al<br />
+            <span class="gradient-apple">100 DÍAS DE EXCEL</span>
+          </h1>
+
+          <p class="lead">
+            Encuentra aquí todos los archivos de los días que voy subiendo en mi perfil <a href="https://www.instagram.com/angelalvarezprofe" target="_blank" rel="noopener"><strong>@angelalvarezprofe</strong></a>
+            para practicar lo que viste en el video e ingresa al canal de whatsapp para llevarlo un paso más allá 😎
+          </p>
+
+          <div class="excel-actions">
+            <a
+              class="btn btn-secondary"
+              href="https://whatsapp.com/channel/0029Vb7lTlQJpe8nBQbSoY3u"
+              target="_blank"
+              rel="noopener"
+            >
+              Ingresa al canal de WhatsApp
+            </a>
+          </div>
+
+          <!-- Avatares comunidad -->
+          <div class="avatars" aria-hidden="true">
+            <img src="https://i.pravatar.cc/80?img=12" alt="">
+            <img src="https://i.pravatar.cc/80?img=32" alt="">
+            <img src="https://i.pravatar.cc/80?img=45" alt="">
+            <img src="https://i.pravatar.cc/80?img=56" alt="">
+            <img src="https://i.pravatar.cc/80?img=68" alt="">
+          </div>
+
+          <p class="muted" style="margin-top: var(--space-12);">
+            Personas que ya están practicando en el canal de WhatsApp.
+          </p>
+        </div>
+
+        <!-- Imagen grande -->
+        <div class="hero-visual">
+          <div class="phone-hero">
+            <img
+              src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=1600&q=80"
+              alt="Persona sosteniendo un celular"
+              loading="lazy"
+            />
+            <div class="phone-fade"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DÍAS DISPONIBLES -->
+<section class="section alt" aria-labelledby="dias-title">
+  <div class="container">
+
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">Archivos de práctica</p>
+        <h2 id="dias-title">Días disponibles</h2>
+      </div>
+      <p class="lead">
+        Cada día incluye el archivo exacto que viste en el video para practicar sin fricción.
+      </p>
+    </div>
+
+    <div class="grid cards">
+
+      <!-- CARD DÍA 1 -->
+      <article class="card reveal">
+        <img
+          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+          alt="Tablas en Excel"
+          style="border-radius: 16px; margin-bottom: 16px;"
+        />
+
+        <span class="pill">Día 1</span>
+
+        <h3 style="margin-top: 12px;">
+          CTRL + T: El poder oculto de las tablas
+        </h3>
+
+        <p class="muted">
+          En este día aprendemos los oscuros secretos de las tablas en Excel.
+          Por qué <strong>CTRL + T</strong> cambia por completo la forma en la que trabajas
+          y cómo usarlo para dejar de pelearte con tus archivos.
+        </p>
+
+        <a
+          href="https://www.alvarezgarcia.mx/dia1-100excel"
+          class="btn btn-primary"
+          style="margin-top: 16px;"
+        >
+          Ir al archivo del Día 1 →
+        </a>
+      </article>
+
+      <!-- CARD PLACEHOLDER FUTUROS DÍAS -->
+      <article class="card reveal" style="opacity: 0.65;">
+        <div
+          style="
+            height: 180px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(22,96,136,0.15), rgba(74,111,165,0.15));
+            display: grid;
+            place-items: center;
+            font-family: var(--font-heading);
+            font-style: italic;
+          "
+        >
+          Próximamente
+        </div>
+
+        <span class="pill">Día 2</span>
+
+        <h3 style="margin-top: 12px;">
+          Siguiente nivel en camino
+        </h3>
+
+        <p class="muted">
+          Este día se desbloquea cuando el video esté publicado.
+          Mantente atento al canal de WhatsApp para no perdértelo.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+  </main>
+
+  <!-- FOOTER SIMPLE -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Álvarez García — 100 Días de Excel.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

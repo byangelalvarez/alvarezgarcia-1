@@ -1,0 +1,585 @@
+<!-- blog.html — Plantilla de Blog (listado + sidebar) basada en tu styles.css -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Blog | Recursos y cursos — Álvarez García</title>
+  <meta name="description" content="Artículos, plantillas y guías prácticas para Excel, Power Query, Power BI y productividad operativa." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400&family=Roboto:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Estilos mínimos SOLO del blog (para no tocar tu base) -->
+  <style>
+    .blog-hero { padding: var(--space-64) 0; }
+    .blog-shell{
+      display:grid;
+      grid-template-columns: 1.6fr 0.7fr;
+      gap: var(--space-32);
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      .blog-shell{ grid-template-columns: 1fr; }
+    }
+
+    .blog-toolbar{
+      display:flex;
+      gap: var(--space-12);
+      flex-wrap: wrap;
+      align-items:center;
+      justify-content: space-between;
+      margin-top: var(--space-24);
+    }
+
+    .search{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: var(--border);
+      background: rgba(255,255,255,.7);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-soft);
+      min-width: 260px;
+      flex: 1;
+    }
+    .search input{
+      border: none;
+      outline: none;
+      width: 100%;
+      background: transparent;
+      font-family: var(--font-body);
+      color: var(--text);
+    }
+    .chips{ display:flex; gap: 10px; flex-wrap: wrap; }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: var(--border);
+      background: rgba(255,255,255,.62);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-soft);
+      font-size: .95rem;
+      cursor:pointer;
+      user-select:none;
+    }
+    .chip[data-active="true"]{
+      background: rgba(22,96,136,.14);
+      border-color: rgba(22,96,136,.22);
+    }
+
+    .post-grid{ display:grid; grid-template-columns: 1fr; gap: var(--space-16); }
+    .post-card{
+      display:grid;
+      grid-template-columns: 220px 1fr;
+      gap: var(--space-16);
+      padding: var(--space-16);
+      border-radius: var(--radius-lg);
+      border: var(--border);
+      background: rgba(255,255,255,.68);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-soft);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      overflow:hidden;
+    }
+    .post-card:hover{ transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+    .post-thumb{
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid rgba(22,96,136,.14);
+      height: 160px;
+      background: rgba(22,96,136,.06);
+    }
+    .post-thumb img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+    }
+    @media (max-width: 720px){
+      .post-card{ grid-template-columns: 1fr; }
+      .post-thumb{ height: 190px; }
+    }
+    .post-meta{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+      margin-bottom: 10px;
+    }
+    .meta-dot{ opacity:.65; }
+
+    .post-title{
+      margin: 0 0 8px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.15;
+      font-size: 1.35rem;
+    }
+    .post-excerpt{ margin: 0 0 var(--space-12); color: var(--text-muted); }
+
+    .post-actions{ display:flex; gap: 10px; flex-wrap: wrap; align-items:center; }
+
+    .sidebar{
+      position: sticky;
+      top: 92px;
+      display:grid;
+      gap: var(--space-16);
+    }
+    .side-card{
+      border: var(--border);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.66);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-soft);
+      padding: var(--space-16);
+    }
+    .side-card h3{
+      margin: 0 0 10px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+    }
+    .side-list{ margin: 0; padding-left: 18px; color: var(--text-muted); }
+    .side-list li{ margin: 8px 0; }
+
+    .pager{
+      display:flex;
+      justify-content: space-between;
+      gap: var(--space-12);
+      margin-top: var(--space-24);
+    }
+
+    /* Article preview / cards mini (si quieres) */
+    .mini-grid{ display:grid; gap: 10px; }
+    .mini{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      padding: 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(22,96,136,.14);
+      background: rgba(22,96,136,.06);
+    }
+    .mini strong{ display:block; line-height: 1.2; }
+    .mini span{ font-size: .92rem; color: var(--text-muted); }
+
+    /* CTA para cursos */
+    .course-cta{
+      background: rgba(22,96,136,.10);
+      border: 1px solid rgba(22,96,136,.18);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER reutilizado -->
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="logo" href="https://alvarezgarcia.mx" aria-label="Inicio">
+        <span><img src="assets/logo-alvarez.png" alt="Álvarez García" /></span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" type="button">
+        <span class="sr-only">Abrir menú</span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="https://alvarezgarcia.mx/#ruta-30">S.E.D.</a>
+        <a href="https://alvarezgarcia.mx/100-dias-excel.html">100 Días</a>
+        <a href="#top" aria-current="page">Blog</a>
+        <a href="https://alvarezgarcia.mx/#contacto">Diagnóstico</a>
+      </div>
+
+      <div class="nav-actions">
+        <a class="btn btn-secondary" href="https://alvarezgarcia.mx/#contacto">Solicitar diagnóstico</a>
+        <a class="btn btn-primary" target="_blank" rel="noreferrer"
+           href="https://wa.me/528126876924?text=Hola%2C%20vengo%20del%20blog%20y%20quiero%20info%20de%20S.E.D.%20(1%20departamento).%20Empresa%3A%20%20Departamento%3A%20%20">
+          WhatsApp
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO BLOG -->
+    <section class="blog-hero section" aria-labelledby="blog-title">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">Recursos prácticos · Plantillas · Guías</p>
+          <h1 id="blog-title">
+            Blog de <span class="gradient-apple">Álvarez García</span>:
+            aprende, aplica y optimiza.
+          </h1>
+          <p class="lead" style="margin-top: var(--space-16); max-width: 720px;">
+            Entradas cortas y útiles para tus cursos: Excel, Power Query, Power BI, automatización y productividad real.
+            Cero relleno. Puro “esto te ahorra tiempo”.
+          </p>
+
+          <div class="blog-toolbar">
+            <label class="search" aria-label="Buscar artículos">
+              <span aria-hidden="true">🔎</span>
+              <input id="searchInput" type="search" placeholder="Buscar: 'tablas', 'power query', 'dashboards'..." />
+            </label>
+
+            <div class="chips" aria-label="Filtros por categoría">
+              <button class="chip" type="button" data-filter="all" data-active="true">Todo</button>
+              <button class="chip" type="button" data-filter="excel">Excel</button>
+              <button class="chip" type="button" data-filter="powerquery">Power Query</button>
+              <button class="chip" type="button" data-filter="powerbi">Power BI</button>
+              <button class="chip" type="button" data-filter="sed">S.E.D.</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="media-placeholder hero-placeholder">
+            <img src="assets/decisiones-impacto.png" alt="" />
+          </div>
+          <div class="float-card float-card--top">
+            <p>Contenido listo</p>
+            <strong>para tus cursos</strong>
+          </div>
+          <div class="float-card float-card--bottom">
+            <p>Aprende</p>
+            <strong>y aplícalo hoy</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="section alt" aria-label="Listado de artículos">
+      <div class="container blog-shell">
+
+        <!-- LISTADO -->
+        <div>
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Últimas publicaciones</p>
+              <h2>Entradas recientes</h2>
+            </div>
+            <a class="btn btn-secondary" href="https://alvarezgarcia.mx/100-dias-excel.html">Ver 100 Días</a>
+          </div>
+
+          <div class="post-grid" id="postGrid">
+
+            <!-- POST CARD (duplicar) -->
+            <article class="post-card reveal" data-category="excel" data-title="CTRL+T: tablas en excel" data-tags="tablas ctrl+t formatos estructurados">
+              <a class="post-thumb" href="post.html" aria-label="Leer artículo">
+                <img src="assets/hero-home.png" alt="Vista previa del artículo" loading="lazy" />
+              </a>
+
+              <div>
+                <div class="post-meta">
+                  <span class="pill">Excel</span>
+                  <span class="muted">6 min lectura</span>
+                  <span class="meta-dot muted">•</span>
+                  <span class="muted">Feb 2026</span>
+                </div>
+
+                <h3 class="post-title">
+                  <a href="post.html" style="color:inherit; text-decoration:none;">
+                    CTRL + T: el atajo que hace que Excel deje de “romperse”
+                  </a>
+                </h3>
+
+                <p class="post-excerpt">
+                  Qué cambia cuando conviertes rangos en tablas: columnas que se auto-llenan, fórmulas que se sostienen, y dashboards que no mueren cuando crece el archivo.
+                </p>
+
+                <div class="post-actions">
+                  <a class="btn btn-primary" href="post.html">Leer artículo →</a>
+                  <a class="btn btn-secondary" href="https://alvarezgarcia.mx/100-dias-excel.html">Descargar práctica</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="post-card reveal" data-category="powerquery" data-title="power query limpiar datos" data-tags="limpieza importar combinar transformar">
+              <a class="post-thumb" href="post.html" aria-label="Leer artículo">
+                <img src="assets/diseño-de-programas.png" alt="Vista previa del artículo" loading="lazy" />
+              </a>
+
+              <div>
+                <div class="post-meta">
+                  <span class="pill">Power Query</span>
+                  <span class="muted">7 min lectura</span>
+                  <span class="meta-dot muted">•</span>
+                  <span class="muted">Feb 2026</span>
+                </div>
+
+                <h3 class="post-title">
+                  <a href="post.html" style="color:inherit; text-decoration:none;">
+                    Limpieza automática: deja de “acomodar” cada semana
+                  </a>
+                </h3>
+
+                <p class="post-excerpt">
+                  El patrón que ahorra horas: importar → limpiar → transformar → cargar. Una vez se construye, el flujo corre solo.
+                </p>
+
+                <div class="post-actions">
+                  <a class="btn btn-primary" href="post.html">Leer artículo →</a>
+                  <a class="btn btn-secondary" href="#contacto-blog">Aplicarlo en mi equipo</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="post-card reveal" data-category="sed" data-title="andon digital sed" data-tags="andon indicadores operacion kpis">
+              <a class="post-thumb" href="post.html" aria-label="Leer artículo">
+                <img src="assets/decisiones-impacto.png" alt="Vista previa del artículo" loading="lazy" />
+              </a>
+
+              <div>
+                <div class="post-meta">
+                  <span class="pill">S.E.D.</span>
+                  <span class="muted">5 min lectura</span>
+                  <span class="meta-dot muted">•</span>
+                  <span class="muted">Feb 2026</span>
+                </div>
+
+                <h3 class="post-title">
+                  <a href="post.html" style="color:inherit; text-decoration:none;">
+                    Andon digital: señales claras para actuar hoy
+                  </a>
+                </h3>
+
+                <p class="post-excerpt">
+                  No necesitas “otro reporte”. Necesitas señales: lo urgente, lo desviado, lo accionable. Eso es Output en S.E.D.
+                </p>
+
+                <div class="post-actions">
+                  <a class="btn btn-primary" href="post.html">Leer artículo →</a>
+                  <a class="btn btn-secondary" href="https://alvarezgarcia.mx/#contacto">Solicitar diagnóstico</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- PAGINACIÓN -->
+          <div class="pager">
+            <a class="btn btn-secondary" href="#" aria-disabled="true">← Anterior</a>
+            <a class="btn btn-secondary" href="#">Siguiente →</a>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" aria-label="Barra lateral">
+
+          <div class="side-card course-cta reveal">
+            <h3>¿Quieres convertir esto en un sistema real?</h3>
+            <p class="muted" style="margin: 0 0 12px;">
+              S.E.D. se implementa por <strong>1 departamento</strong>. Arreglamos el flujo, medimos impacto y lo dejamos operable.
+            </p>
+            <a class="btn btn-primary" href="https://alvarezgarcia.mx/#contacto">Solicitar diagnóstico</a>
+          </div>
+
+          <div class="side-card reveal">
+            <h3>Categorías</h3>
+            <ul class="side-list">
+              <li><a href="#" class="muted" data-jump="excel">Excel</a></li>
+              <li><a href="#" class="muted" data-jump="powerquery">Power Query</a></li>
+              <li><a href="#" class="muted" data-jump="powerbi">Power BI</a></li>
+              <li><a href="#" class="muted" data-jump="sed">S.E.D.</a></li>
+            </ul>
+          </div>
+
+          <div class="side-card reveal">
+            <h3>Más leídos</h3>
+            <div class="mini-grid">
+              <a class="mini" href="post.html" style="text-decoration:none; color:inherit;">
+                <span aria-hidden="true">📌</span>
+                <div>
+                  <strong>La regla de oro de tablas</strong>
+                  <span>Evita archivos frágiles</span>
+                </div>
+              </a>
+              <a class="mini" href="post.html" style="text-decoration:none; color:inherit;">
+                <span aria-hidden="true">⚙️</span>
+                <div>
+                  <strong>Power Query en 1 flujo</strong>
+                  <span>Importar → limpiar → cargar</span>
+                </div>
+              </a>
+              <a class="mini" href="post.html" style="text-decoration:none; color:inherit;">
+                <span aria-hidden="true">📊</span>
+                <div>
+                  <strong>KPIs que sí sirven</strong>
+                  <span>Menos “reporte”, más acción</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- CTA final (captura de leads del blog) -->
+    <section class="cta section" id="contacto-blog" aria-labelledby="cta-title">
+      <div class="container cta-card reveal">
+        <div>
+          <p class="eyebrow">Recibe recursos</p>
+          <h2 id="cta-title">Te mando plantillas y prácticas (sin spam)</h2>
+          <p class="lead">Útil para tus cursos y para tu chamba: ejemplos, archivos y guías rápidas.</p>
+
+          <div class="panel contact-form reveal">
+            <form action="https://formsubmit.co/contacto@alvarezgarcia.mx" method="POST">
+              <input type="hidden" name="_subject" value="Nuevo contacto — Blog (Álvarez García)" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+
+              <label>
+                Nombre
+                <input type="text" name="name" placeholder="Ej. Ángel" required />
+              </label>
+
+              <label>
+                Correo
+                <input type="email" name="email" placeholder="tu@correo.com" required />
+              </label>
+
+              <label>
+                Tema que te interesa
+                <select name="tema" required>
+                  <option value="" selected disabled>Selecciona</option>
+                  <option>Excel (tablas, funciones, dashboards)</option>
+                  <option>Power Query (limpieza, automatización)</option>
+                  <option>Power BI (modelado, KPIs)</option>
+                  <option>S.E.D. (Input / Process / Output)</option>
+                </select>
+              </label>
+
+              <div class="hero-actions" style="margin-top: var(--space-16);">
+                <button class="btn btn-primary" type="submit">Quiero recursos</button>
+                <a class="btn btn-secondary" target="_blank" rel="noreferrer"
+                   href="https://wa.me/528126876924?text=Hola%2C%20vengo%20del%20blog%20y%20quiero%20recursos%20y%20plantillas.%20Tema%3A%20">
+                  Pedir por WhatsApp
+                </a>
+              </div>
+
+              <p class="muted" style="margin-top: var(--space-16); font-size:.95rem;">
+                Promesa: solo contenido útil. Puedes salirte cuando quieras.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" aria-label="Pie de página">
+      <div class="container footer-grid">
+        <div>
+          <span><img src="assets/logo-alvarez-verde.png" alt="Álvarez García" /></span>
+          <p class="muted">Blog · Recursos y cursos · Monterrey, Nuevo León</p>
+        </div>
+
+        <div>
+          <h4>Enlaces</h4>
+          <ul class="short-list">
+            <li><a href="https://alvarezgarcia.mx/#ruta-30">S.E.D.</a></li>
+            <li><a href="https://alvarezgarcia.mx/100-dias-excel.html">100 Días de Excel</a></li>
+            <li><a href="#top">Blog</a></li>
+            <li><a href="https://alvarezgarcia.mx/#contacto">Diagnóstico</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contacto</h4>
+          <ul class="short-list">
+            <li><a href="mailto:contacto@alvarezgarcia.mx">contacto@alvarezgarcia.mx</a></li>
+            <li><a href="tel:+528126876924">+52 812 687 6924</a></li>
+            <li><a href="https://instagram.com/alvarezgarciamx" target="_blank" rel="noreferrer">Instagram</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>SEO</h4>
+          <ul class="short-list">
+            <li>Blog Excel y Power Query</li>
+            <li>Plantillas y prácticas</li>
+            <li>Dashboards operativos</li>
+            <li>Productividad por departamento</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p>© 2026 Álvarez García — Consultoría y Capacitación.</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- JS: filtro por búsqueda + categorías (no toca tu script.js; lo complementa) -->
+  <script src="script.js"></script>
+  <script>
+    (function(){
+      const searchInput = document.getElementById('searchInput');
+      const chips = Array.from(document.querySelectorAll('.chip'));
+      const posts = Array.from(document.querySelectorAll('#postGrid .post-card'));
+
+      let activeFilter = 'all';
+
+      function normalize(s){ return (s || '').toLowerCase().trim(); }
+
+      function apply(){
+        const q = normalize(searchInput.value);
+        posts.forEach(card => {
+          const cat = normalize(card.getAttribute('data-category'));
+          const title = normalize(card.getAttribute('data-title'));
+          const tags = normalize(card.getAttribute('data-tags'));
+
+          const filterOk = (activeFilter === 'all') || (cat === activeFilter);
+          const searchOk = (!q) || title.includes(q) || tags.includes(q);
+
+          card.style.display = (filterOk && searchOk) ? '' : 'none';
+        });
+      }
+
+      chips.forEach(btn => {
+        btn.addEventListener('click', () => {
+          chips.forEach(b => b.dataset.active = "false");
+          btn.dataset.active = "true";
+          activeFilter = btn.getAttribute('data-filter');
+          apply();
+        });
+      });
+
+      searchInput.addEventListener('input', apply);
+
+      // Quick jumps en sidebar
+      document.querySelectorAll('[data-jump]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = a.getAttribute('data-jump');
+          chips.forEach(b => b.dataset.active = "false");
+          const chip = chips.find(b => b.getAttribute('data-filter') === target) || chips[0];
+          chip.dataset.active = "true";
+          activeFilter = chip.getAttribute('data-filter');
+          apply();
+          window.scrollTo({ top: document.getElementById('postGrid').offsetTop - 90, behavior: 'smooth' });
+        });
+      });
+
+      apply();
+    })();
+  </script>
+</body>
+</html>
